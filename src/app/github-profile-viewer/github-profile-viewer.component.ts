@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-github-profile-viewer',
-  templateUrl: './github-profile-viewer.component.html',
+  template: `
+    <input (keyup)="changeUsername($event.target.value)" [value]="userName" />
+  `,
   styleUrls: ['./github-profile-viewer.component.css']
 })
-export class GithubProfileViewerComponent implements OnInit {
+export class GithubProfileViewerComponent {
+  public userName = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  public changeUsername(value: string): void {
+    this.userName = value;
   }
-
 }
