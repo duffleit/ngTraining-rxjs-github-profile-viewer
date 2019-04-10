@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { GithubProfileViewerComponent } from './github-profile-viewer/github-profile-viewer.component';
@@ -10,6 +11,7 @@ import { GithubProfileViewerComponent } from './github-profile-viewer/github-pro
     GithubProfileViewerComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule
   ],
   providers: [],
