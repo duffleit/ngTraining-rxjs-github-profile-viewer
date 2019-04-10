@@ -1,27 +1,31 @@
-# NgTrainingGithubProfileViewer
+# RxJS: Github Profile Viewer
+
+This exercise helps you in understanding the usage of Http-Observables and render its response. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 
-## Development server
+## Tasks
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Create a component which allow the user to enter a github-username into a textbox.
 
-## Code scaffolding
+2. Fetch the user-profile on every textbox-change and just render it as json: 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+// github request: 
+this.githubProfile$ = this.http.get(
+	`https://api.github.com/users/${this.userName}`
+);
 
-## Build
+// rendering in json
+{{ githubProfile$ | async | json }}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+3. Debounce the fetching, so that a profile should only be loaded at most every seconds. _Hint:_ Store the username as `BehaviorSubject`. 
 
-## Running unit tests
+3. Show the name (`.login`), his description (`.bio`), current residence (`.location`) and profile-picture:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+<img [src]="userName.avatar_url"/>
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+4. __BONUS:__ Add Error-Handling and a loading indicator to the current solution. 
